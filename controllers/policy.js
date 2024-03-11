@@ -1,22 +1,58 @@
-// Import any required services or models here
-const policyService = require('../services/policy');
+const policyService = require("../services/policy");
 
-// Define your controller methods
-exports.getExamples = async (req, res) => {
+exports.uploadFile = async (req, res) => {
   try {
-    const examples = await policyService.getExamples();
-    res.json(examples);
+    const upload = await policyService.uploadFile(req);
+    res.json({
+      success: true,
+      data: upload,
+      message: "successfullly uploaded data",
+    });
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: `Internal Server Error: ${error.message}`,
+      });
   }
 };
 
-exports.createExample = async (req, res) => {
+//find policy info with the help of the username
+exports.searchPolicyInfo = async (req, res) => {
   try {
-    const { name } = req.body;
-    const newExample = await policyService.createExample(name);
-    res.json(newExample);
+    const { userName } = req.body;
+    const filter = { firstName: userName };
+    const policyInfo = await policyService.searchPolicyInfo(filter);
+    res.json({
+      success: true,
+      data: policyInfo,
+      message: "successfullly fetched data",
+    });
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: `Internal Server Error: ${error.message}`,
+      });
+  }
+};
+
+exports.aggregatePolicy = async (req, res) => {
+  try {
+    const policyInfo = await policyService.aggregatePolicy();
+    res.json({
+      success: true,
+      data: policyInfo,
+      message: "successfullly fetched data",
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: `Internal Server Error: ${error.message}`,
+      });
   }
 };
