@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "d8194aab-c335-4e2b-8740-77466da2d8ae",
+		"name": "insuredmine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "uploadFile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "media",
+							"type": "file",
+							"src": "/C:/Users/vishw_dsqk3er/Downloads/data-sheet - Node js Assesment.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/insuredMine/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"insuredMine",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchPolicyInfo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"userName\": \"Sebastian Scarberry\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/insuredMine/searchPolicyInfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"insuredMine",
+						"searchPolicyInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "aggregatePolicy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/insuredMine/aggregatePolicy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"insuredMine",
+						"aggregatePolicy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scheduleMessage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"message\": \"This is a scheduled message\",\r\n  \"day\": \"Monday\",\r\n  \"time\": \"21:34\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/insuredMine/scheduleMessage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"insuredMine",
+						"scheduleMessage"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
