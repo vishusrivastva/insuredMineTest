@@ -2,12 +2,17 @@ const express = require("express");
 const router = express.Router();
 const policyController = require("../controllers/policy");
 const multer = require("multer");
-
+const fs = require("fs");
 
 // Set up Multer storage
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads"); // Set your upload directory
+    const uploadDir = "uploads";
+    // Check if the uploads directory exists
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir);
+    }
+    cb(null, uploadDir);
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + "-" + file.originalname);
